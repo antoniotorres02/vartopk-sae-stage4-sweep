@@ -1,0 +1,86 @@
+Additional sparse baseline hyperparameters
+=========================================
+
+These values correspond to the Variable TopK, L1SparseAutoencoder, and
+JumpReLUSparseAutoencoder runs in stage4_arch_compare_results.csv.
+
+Common configuration
+--------------------
+
+input_dim: 768
+hidden_dim: 3072
+hidden_multiplier: 4
+
+Notes
+-----
+
+- Variable TopK uses an explicit Kmax. In this run, Kmax is equal to the nominal
+  target for every point.
+- L1SparseAutoencoder and JumpReLUSparseAutoencoder do not use an explicit Kmax.
+- The nominal target is used to organize the sweep; sparsity is controlled by
+  the regularization strength lambda for L1SparseAutoencoder and
+  JumpReLUSparseAutoencoder.
+- JumpReLUSparseAutoencoder was initialized with theta = 0.01 and bandwidth =
+  0.05 for every point. Theta is represented as a learnable log-threshold in
+  the model, so this is the initial threshold value.
+
+Variable TopK
+-------------
+
+lambda_prior: 0.003
+beta: 0.0003
+expected_mse_weight: 1.0
+hard_mse_weight: 0.0
+budget_weight: 0.0
+kmax_factor: 1.0
+
+Nominal target  Kmax  lambda_prior  beta    Effective L0
+--------------  ----  ------------  ------  ------------
+             8     8         0.003  0.0003    6.58390466
+            11    11         0.003  0.0003    8.79819037
+            16    16         0.003  0.0003   12.92781409
+            23    23         0.003  0.0003   19.24306441
+            32    32         0.003  0.0003   29.17721620
+            45    45         0.003  0.0003   43.19523278
+            64    64         0.003  0.0003   60.23038903
+            91    91         0.003  0.0003   83.76602360
+           128   128         0.003  0.0003  116.29866869
+           181   181         0.003  0.0003  177.47185906
+           256   256         0.003  0.0003  245.39249841
+
+L1SparseAutoencoder
+-------------------
+
+Nominal target  L1 lambda  Effective L0
+--------------  ---------  ------------
+             8     0.0300   13.65636958
+            11     0.0350   11.72078284
+            16     0.0250   19.02881856
+            23     0.0180   37.20157047
+            32     0.0140   57.64213967
+            45     0.0115   77.76096142
+            64     0.0100   97.79508131
+            91     0.0085  122.41206952
+           128     0.0073  146.41063457
+           181     0.0062  167.87854751
+           256     0.0052  213.64612564
+
+JumpReLUSparseAutoencoder
+-------------------------
+
+theta_init: 0.01
+bandwidth: 0.05
+
+Nominal target  JumpReLU lambda  Theta init  Bandwidth  Effective L0
+--------------  ---------------  ----------  ---------  ------------
+             8          0.02500        0.01       0.05    8.39102360
+            11          0.01800        0.01       0.05   11.68562659
+            16          0.01200        0.01       0.05   16.86670918
+            23          0.00800        0.01       0.05   25.23114636
+            32          0.00600        0.01       0.05   30.54117506
+            45          0.00450        0.01       0.05   40.42805325
+            64          0.00330        0.01       0.05   54.51957111
+            91          0.00220        0.01       0.05   80.74210778
+           128          0.00150        0.01       0.05  112.06700415
+           181          0.00100        0.01       0.05  156.70994101
+           256          0.00065        0.01       0.05  223.55871333

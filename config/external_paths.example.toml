@@ -1,0 +1,6 @@
+# Copy this file to external_paths.toml and adjust paths if needed.
+
+cub_raw_dir = "/home/antonio/code/MASTER/TFM/data/CUB_200_2011/CUB_200_2011"
+cub_processed_dir = "/home/antonio/code/MASTER/TFM/data/CUB_processed/class_attr_data_10"
+convnext_checkpoint = "/home/antonio/code/MASTER/TFM/artifacts/models/sae/runs/convnext_tiny_cub/cub_convnext_tiny_classifier.pt"
+cub_feature_cache = "/home/antonio/code/MASTER/TFM/artifacts/models/sae/runs/convnext_feature_sae_cub/features/cub_features.pt"

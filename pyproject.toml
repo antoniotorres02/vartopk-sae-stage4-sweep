@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tfm-sae-evals"
+version = "0.1.0"
+description = "Clean SAE evaluation package and lightweight result archive for the TFM project"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "Pillow",
+    "scikit-learn",
+    "torch",
+    "torchvision",
+    "tqdm",
+]
+
+[project.scripts]
+sae-evals = "tfm_sae_evals.cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

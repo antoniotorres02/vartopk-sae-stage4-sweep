@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Sweep outputs (checkpoints and caches live on Hugging Face, not in git)
+outputs/
+checkpoints/
+features/
+backbone/
+artifacts/
+*.pt
+
+# Local configuration
+config/external_paths.toml
